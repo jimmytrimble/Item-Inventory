@@ -32,6 +32,8 @@ function DisplayItems () {
   const [ itemData, setItemData ] = useState([]);
 
 
+
+
   useEffect(() => {
     fetch('http://localhost:8081/items')
       .then(response => response.json())
@@ -43,9 +45,10 @@ function DisplayItems () {
   }, [])
 
 
-  // function addItem() {
-  //   navigate('/add/item')
+function addItem() {
+        navigate('/add/item')
 
+}
 
 
 
@@ -70,7 +73,7 @@ function DisplayItems () {
     ))}
 
 
-      <StyledButton id="social-search-button">Add New Item</StyledButton>
+      <StyledButton id="social-search-button" onClick={addItem}>Add New Item</StyledButton>
 
   </>
 
