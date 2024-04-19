@@ -6,6 +6,8 @@ import { UserLog } from './UserLog';
 import Homepage from './Homepage'
 import LoginPage from './LoginPage'
 import UserPage from './UserPage'
+import ItemPage from './ItemPage'
+import NewItem from './NewItem'
 // import LoginButton from './LoginButton'
 // import LogoutButton from './LogoutButton'
 // import styled from "styled-components";
@@ -32,6 +34,8 @@ function App() {
         <Route path='/' element={<Homepage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/user/:id' element={<UserPage />} />
+        <Route path='/inventory' element={<ItemPage />} />
+        <Route path='/add/item' element={<NewItem />} />
       </Routes>
 
 

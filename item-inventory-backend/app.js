@@ -69,4 +69,69 @@ app.post('/item/new', (req, res) => {
   })
 })
 
+
+
+//All PATCH requests
+
+app.patch('/user/update/:id', (req, res) => {
+  const { name, username, password } = req.body
+  const { id } = req.params
+  let updates = {};
+  if (name) updates.name = name
+  if (username) updates.username = username
+  if (password) updates.password = password
+  knex('users')
+    .where('id', id)
+    .update(updates)
+    .then(response => {
+      res.status(201).send('Updated successfully')
+    })
+})
+
+
+
+app.patch('/user/item/update/:id', (req, res) => {
+  const { item_name, price, image, details, item_id } = req.body
+  const {id} = req.params
+  let updates = {};
+  if(item_name) updates.item_name = item_name
+  if(price) updates.price = price
+  if(image) updates.image = image
+  if(details) updates.details = details
+  if(item_id) updates.item_id = item_id
+  knex('items')
+  .where('id', id)
+  .update(updates)
+  .then(response => {
+    res.status(201).send('Updated successfully.')
+  })
+})
+
+//ALL DELETE REQUESTS
+
+app.delete('/user/remove/item/:id', (req, res) => {
+  const { id } = req.params
+  knex('items')
+    .where('id', id)
+    .del()
+    .then(deleted => {
+      if(deleted) res.status(202).send(`Item ${id} deleted.`)
+      else res.status(404).send(`Item ${id} not found`)
+    })
+})
+
+
+
+app.delete('/user/remove/:username', (req, res) => {
+  const { username } = req.params;
+  knex('users')
+    .where('username', username)
+    .del()
+    .then(deleted => {
+      if (deleted) res.status(202).send(`User ${username} deleted.`)
+      else res.status(404).send(`User ${username} not found.`)
+    })
+})
+
+
 app.listen(port, (req, res) => console.log(`Express server is listening on ${port}.`))

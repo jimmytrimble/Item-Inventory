@@ -153,13 +153,18 @@ function Homepage() {
 
   }
 
+  function handleItems () {
+    navigate('/inventory')
+  }
+
 
 
 
     return (
       <>
           <div className="app">
-            <header>All Items In Inventory</header>
+            <header>
+              <h2 onClick={()=>{handleItems()}}>All Items In Inventory</h2></header>
             <h2>Welcome to our Item Inventory</h2>
              <div className="data-import-container">
              <div className="form">

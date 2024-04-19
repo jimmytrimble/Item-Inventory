@@ -109,42 +109,43 @@ const StyledLI = styled.li`
     border: 2px solid white;
 `
 
-function LoginPage () {
+function NewItem () {
 
   const navigate = useNavigate();
 
 
 
 
-  const createUser = () => {
-    let user_name = document.getElementById('user_name').value
-    let username = document.getElementById('username').value
-    let password = document.getElementById('password').value
+  const createItem = () => {
+    let item_name = document.getElementById('item_name').value
+    let price = document.getElementById('price').value
+    let image = document.getElementById('image').value
+    let details = document.getElementById('details').value
+
 
 
 
 
     const event = {
-        name: user_name,
-        username: username,
-        password: password
+        item_name: item_name,
+        price: price,
+        image: image,
+        details: details
       }
 
 
-    fetch('http://localhost:8081/add/user', {
+      fetch('http://localhost:8081/item/new', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(event),
+      })
 
-     method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(event),
-    })
-    .then(response => {
-      console.log(response)
-      document.location.reload();
-    })
-
-  }
+      .then(response => {
+        document.location.reload();
+      })
+    }
 
   function navigateHome () {
     navigate('/')
@@ -158,19 +159,22 @@ function LoginPage () {
            <NewGift id='add-event'>
                   <StyledTitle> Fill Out Below To Create Account </StyledTitle>
                   <InnerDiv>
-                      <label htmlFor="user_name">Name of User:</label>
-                      <input type="text" id="user_name" /> <br />
+                      <label htmlFor="item_name">Name of Item:</label>
+                      <input type="text" id="item_name" /> <br />
                   </InnerDiv>
                   <InnerDiv>
-                      <label htmlFor="username">Enter Username</label>
-                      <input type="text" id="username" name="username" /> <br />
+                      <label htmlFor="price">Enter Price</label>
+                      <input type="integer" id="price" name="price" /> <br />
                   </InnerDiv>
                   <InnerDiv>
-                      <label htmlFor="password">Enter Password</label> <br />
-                      <input type="text" id="password" name="password" />
-
+                      <label htmlFor="image">Enter Image Link</label> <br />
+                      <input type="text" id="image" name="image" />
+                   </InnerDiv>
+                   <InnerDiv>
+                      <label htmlFor="details">Enter Details</label>
+                      <input type="text" id="details" name="details" /> <br />
                   </InnerDiv>
-                  <StyledButton type="submit" onClick={createUser}>Submit</StyledButton>
+                  <StyledButton type="submit" onClick={createItem}>Submit</StyledButton>
                   <StyledButton type="submit" onClick={navigateHome}>Home</StyledButton>
 
             </NewGift>
@@ -182,11 +186,8 @@ function LoginPage () {
 
     </>
 
-
-
-
   )
-}
+  }
 
 
-export default LoginPage
+  export default NewItem
