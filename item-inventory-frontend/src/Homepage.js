@@ -120,6 +120,8 @@ function Homepage() {
   const [ itemData, setItemData ] = useState([]);
   const [ userData, setUserData ] = useState([])
 
+  let user_name = document.getElementById('username')
+
 
   const navigate = useNavigate();
 
@@ -127,8 +129,9 @@ function Homepage() {
     fetch(`http://localhost:8081/users`)
       .then(response => response.json())
       .then(data => {
-        // console.log(data)
-        setUserData(data)
+        console.log('data', data)
+        // setUserData(data)
+        console.log('yesdata', userData)
         let username = data.map(data => data.username);
         // console.log('this is the username', username);
         // setUsername(username);
@@ -139,7 +142,9 @@ function Homepage() {
   }, []);
 
   function handleSubmit() {
-    navigate('./user')
+    const user_id = user_name
+
+    navigate(`/user/:id`)
 
   }
 

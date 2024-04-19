@@ -35,7 +35,7 @@ app.get('/user/items/:id', (req, res) => {
   knex('items')
     .select('users.name', 'items.item_name', 'items.price', 'items.image', 'items.details')
     .join('users', 'items.item_id', '=', 'users.id')
-    .where('users.id', id)
+    .where('item_id', id)
     .then(data => res.status(200).json(data))
     .catch(err => res.status(400).send(err))
 
