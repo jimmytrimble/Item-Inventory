@@ -117,10 +117,10 @@ function NewItem () {
 
 
   const createItem = () => {
-    let item_name = document.getElementById('item_name').value
-    let price = document.getElementById('price').value
-    let image = document.getElementById('image').value
-    let details = document.getElementById('details').value
+    let item_name = (document.getElementById('item_name').value)
+    let price = parseInt(document.getElementById('price').value)
+    let image = (document.getElementById('image').value)
+    let details = (document.getElementById('details').value)
 
 
 
@@ -143,9 +143,9 @@ function NewItem () {
         body: JSON.stringify(event),
       })
 
-      .then(response => {
-        document.location.reload();
-      })
+      // .then(response => {
+      //   document.location.reload();
+      // })
     }
 
   function navigateHome () {
