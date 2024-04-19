@@ -130,7 +130,8 @@ function NewItem () {
         item_name: item_name,
         price: price,
         image: image,
-        details: details
+        details: details,
+        item_id: 1
       }
 
 

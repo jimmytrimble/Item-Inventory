@@ -50,6 +50,10 @@ function addItem() {
 
 }
 
+function goHome() {
+  navigate('/')
+}
+
 
 
 
@@ -74,7 +78,7 @@ function addItem() {
 
 
       <StyledButton id="social-search-button" onClick={addItem}>Add New Item</StyledButton>
-
+      <StyledButton id="social-search-button" onClick={goHome}>Home</StyledButton>
   </>
 
 
