@@ -158,7 +158,7 @@ function NewItem () {
     <>
 
            <NewGift id='add-event'>
-                  <StyledTitle> Fill Out Below To Create Account </StyledTitle>
+                  <StyledTitle> Fill Out To Add New Item </StyledTitle>
                   <InnerDiv>
                       <label htmlFor="item_name">Name of Item:</label>
                       <input type="text" id="item_name" /> <br />
