@@ -4,15 +4,15 @@
  * @type { Object.<string, import("knex").Knex.Config> }
  */
 
-const seeding = 'postgres://postgres:docker@127.0.0.1:5433/item_inventory'
-const building = 'postgres://postgres:docker@item_inventory:5432/item_inventory'
+const seeding = 'postgres://postgres:docker@127.0.0.1:5432/item_inventory2'
+const building = 'postgres://postgres:docker@localhost/item_inventory2'
 
 module.exports = {
 
   development: {
     client: 'pg',
-    // connection: seeding,
-    connection: building
+    connection: seeding,
+    // connection: building
   },
 
   // staging: {

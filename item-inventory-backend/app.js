@@ -3,12 +3,23 @@ const app = express();
 const cors = require('cors');
 const port = 8081;
 const knex = require('knex')(require('./knexfile.js')['development']);
+const bodyParser = require('body-parser');
 
 app.use(cors(), express.json());
-
+app.use(bodyParser.json());
 
 
 // all GET requests
+
+app.get('/users', async (req, res) => {
+  try {
+    const users = await db('users').select('*');
+    res.status(200).json(users);
+  } catch (error) {
+    console.error('Error fetching users:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
 
 app.get('/', (req, res) => {
   res.send('testing');
@@ -44,6 +55,29 @@ app.get('/user/items/:id', (req, res) => {
 
 
 // all POST requests
+
+app.post('/login', async (req, res) => {
+  const { username, password } = req.body;
+  try {
+    const user = await knex('users').where({ username, password }).first();
+    if (user) {
+      res.json({ success: true, user });
+    } else {
+      res.status(401).json({ success: false, message: 'Invalid credentials' });
+    }
+  } catch (err) {
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
+app.post('/logout', (req, res) => {
+  res.json({ success: true, message: 'Logged out successfully' });
+});
+
+// app.listen(3001, () => {
+//   console.log('Server is running on port 3001');
+// });
+
 
 app.post('/add/user', (req, res) => {
   const { name, username, password } = req.body;

@@ -126,13 +126,13 @@ function Homepage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:8081/users`)
+    fetch(`http://localhost:8081/login`)
       .then(response => response.json())
       .then(data => {
         console.log('data', data)
         // setUserData(data)
         console.log('yesdata', userData)
-        let username = data.map(data => data.username);
+        // let username = data.map(data => data.username);
         // console.log('this is the username', username);
         // setUsername(username);
         // let passwords = data.map(data => data.password);
@@ -144,12 +144,12 @@ function Homepage() {
   function handleSubmit() {
     const user_id = user_name
 
-    navigate(`/user/:id`)
+    navigate(`/inventory`)
 
   }
 
   function createUser () {
-    navigate('./login')
+    navigate('/createaccount')
 
   }
 
@@ -165,25 +165,13 @@ function Homepage() {
           <div className="app">
             <header>
               <h2 onClick={()=>{handleItems()}}>All Items In Inventory</h2></header>
-            <h2>Welcome to our Item Inventory</h2>
+            <h2>Welcome to our Item Inventory!</h2>
              <div className="data-import-container">
              <div className="form">
              <form>
-            <label for="username">
-              <strong>USERNAME:</strong>
-            </label>
-            <br></br>
-            <input type="text" id="username" name="username" />
-            <br />
-            <label for="password">
-              <strong>PASSWORD: </strong>
-            </label>
-            <br></br>
-            <input type="password" id="password" name="password" />
-            <br />
-            <input onClick={()=>{handleSubmit()}} className="submit" type="button" value="SUBMIT"/>
+
             <p></p>
-            <input onClick={()=>{createUser()}} className="submit" type="button" value="Create Account"/>
+            <input onClick={()=>{createUser()}} className="submit" type="button" value="Create New Account"/>
           </form>
           </div>
          </div>

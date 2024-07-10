@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { useState, useEffect, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { css, styled } from 'styled-components';
 
 const StyledDiv = styled.div`
@@ -109,10 +110,11 @@ const StyledLI = styled.li`
     border: 2px solid white;
 `
 
+
+
 function LoginPage () {
 
   const navigate = useNavigate();
-
 
 
 
@@ -147,7 +149,7 @@ function LoginPage () {
   }
 
   function navigateHome () {
-    navigate('/')
+    navigate('/inventory')
   }
 
 
@@ -170,6 +172,7 @@ function LoginPage () {
                       <input type="text" id="password" name="password" />
 
                   </InnerDiv>
+
                   <StyledButton type="submit" onClick={createUser}>Submit</StyledButton>
                   <StyledButton type="submit" onClick={navigateHome}>Home</StyledButton>
 

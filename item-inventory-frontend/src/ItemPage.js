@@ -70,7 +70,7 @@ function goHome() {
     {itemData.map((item) => (
       <>
         <h4>{item.item_name}</h4>
-        <h4>{item.price}</h4>
+        <h4>${item.price}</h4>
         <h4><StyledImage src={item.image} alt="image"></StyledImage></h4>
         <h4>{item.details}</h4>
       </>

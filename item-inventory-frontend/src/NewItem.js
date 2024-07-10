@@ -149,7 +149,7 @@ function NewItem () {
     }
 
   function navigateHome () {
-    navigate('/')
+    navigate('/inventory')
   }
 
 
