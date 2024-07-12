@@ -1,4 +1,7 @@
 # Item-Inventory
+To start backend server, cd into item-inventory-backend and npm start. If an error is given, try npm installing react
+To start frontend, cd into item-inventory-frontend and npm staty as well.
+
 1) '/' route is Homepage with link to All Items in the inventory as well as a Login section
    
 2) 'Create New Account' allows a user to create credentials
